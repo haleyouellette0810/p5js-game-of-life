@@ -7,12 +7,42 @@
         padding: 0;
         margin: 40px;
       } 
+      var grid;
+
+function setup () {
+  createCanvas(400, 400);
+  // grid = new Grid(20);
+}
+
+function draw () {
+  background(250);
+
+  // grid.draw();
+}
+
+class Grid {
+  constructor (cellSize) {
+    // update the contructor to take cellSize as a parameter
+    // use cellSize to calculate and assign values for numberOfColumns and numberOfRows
+  }
+
+  draw () {
+    for (var column = 0; column < this.numberOfColumns; column ++) {
+      for (var row = 0; row < this.numberOfRows; row++) {
+        fill(240);
+        noStroke();
+        rect(column * this.cellSize + 1, row * this.cellSize + 1, this.cellSize - 1, this.cellSize - 1);
+      }
+    }
+  }
+}
+```
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
     <script src="sketches/gol.js"></script>
   </head>
   <body>
     <h1>Conway's Game of Life</h1>
-    <h3>written in p5.js</h3>
+    <h3>written in p5.js, by Haley Levesque</h3>
   </body>
 </html>

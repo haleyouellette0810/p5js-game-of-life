@@ -18,6 +18,15 @@ class Grid {
     this.cellSize = cellSize;
     this.numberOfColumns = height / this.cellSize;
     this.numberOfRows = width / this.cellSize;
+
+
+    var x = 2; // how big the first array should be
+var y = 2; // how big each array inside of the first array should be
+var twoDArray = new Array(x); // create the initial array
+for (var i = 0; i < twoDArray.length; i ++) { // loop over each position in the array
+  twoDArray[i] = new Array(y); // create another array inside of the first array at position `i`
+  print(twoDArray);
+}
   }
 
   draw(){

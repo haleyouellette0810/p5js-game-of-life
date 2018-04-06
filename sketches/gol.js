@@ -10,7 +10,20 @@ function setup() {
 
 function draw() {
   background(250);
-grid.draw();
+  grid.draw();
+}
+
+
+class Cell {
+  // cell object
+  constructor(column, row, size) {
+    this.column = column;
+    this.row = row;
+    this.size = size;
+
+    this.isAlive = false;
+
+  }
 }
 
 class Grid {
@@ -18,18 +31,29 @@ class Grid {
     this.cellSize = cellSize;
     this.numberOfColumns = height / this.cellSize;
     this.numberOfRows = width / this.cellSize;
+    this.cells = new Array(this.numberOfColumns);
 
 
-    var x = 2; // how big the first array should be
-var y = 2; // how big each array inside of the first array should be
-var twoDArray = new Array(x); // create the initial array
-for (var i = 0; i < twoDArray.length; i ++) { // loop over each position in the array
-  twoDArray[i] = new Array(y); // create another array inside of the first array at position `i`
-  print(twoDArray);
-}
+    //filling array with empty arrays to form a 2d matrix
+    for (var i = 0; i < this.cells.length; i++) {
+      this.cells[i] = new Array(this.numberOfRows);
+    }
+
+
+    // going inside the arrays within the arrays and placing a cell at every index.
+    for (var column = 0; column < this.numberOfColumns; column++) {
+      for (var row = 0; row < this.numberOfRows; row++) {
+        this.cells[column][row] = new Cell(column, row, cellSize)
+      }
+    }
+
+
+
+
   }
 
-  draw(){
+
+  draw() {
     for (var column = 0; column < this.numberOfColumns; column++) {
       for (var row = 0; row < this.numberOfRows; row++) {
         fill(240);
@@ -38,14 +62,11 @@ for (var i = 0; i < twoDArray.length; i ++) { // loop over each position in the 
       }
     }
   }
-
-
-  
 }
 
 
 
- 
+
 
 
 

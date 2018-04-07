@@ -6,11 +6,12 @@ var grid;
 function setup() {
   createCanvas(400, 400);
   grid = new Grid(20);
+grid.randomize();
 }
 
 function draw() {
   background(250);
-  grid.draw();
+  grid.draw(); 
 }
 
 
@@ -35,6 +36,14 @@ class Cell {
   }
 
 
+  setIsAlive(value) {
+    if (value == false) {
+      this.isAlive = false;
+    } else if (value == true) {
+      this.isAlive = true;
+    }
+  }
+
 }
 
 class Grid {
@@ -58,7 +67,16 @@ class Grid {
       }
     }
   }
- draw() {
+
+  randomize() {
+    for (var column = 0; column < this.numberOfColumns; column++) {
+      for (var row = 0; row < this.numberOfRows; row++) {
+        this.cells[column][row].setIsAlive(floor(random(2)));
+      }
+    }
+  }
+
+  draw() {
     for (var column = 0; column < this.numberOfColumns; column++) {
       for (var row = 0; row < this.numberOfRows; row++) {
         this.cells[column][row].draw();

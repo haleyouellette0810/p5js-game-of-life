@@ -15,15 +15,26 @@ function draw() {
 
 
 class Cell {
+
   // cell object
   constructor(column, row, size) {
     this.column = column;
     this.row = row;
     this.size = size;
-
     this.isAlive = false;
-
   }
+
+  draw() {
+    if (this.isAlive == true) {
+      fill(200, 0, 200);
+    } else if (this.isAlive == false) {
+      fill(240);
+    }
+    noStroke();
+    rect(this.column * this.size + 1, this.row * this.size + 1, this.size - 1, this.size - 1);
+  }
+
+
 }
 
 class Grid {
@@ -46,23 +57,16 @@ class Grid {
         this.cells[column][row] = new Cell(column, row, cellSize)
       }
     }
-
-
-
-
   }
-
-
-  draw() {
+ draw() {
     for (var column = 0; column < this.numberOfColumns; column++) {
       for (var row = 0; row < this.numberOfRows; row++) {
-        fill(240);
-        noStroke();
-        rect(column * this.cellSize + 1, row * this.cellSize + 1, this.cellSize - 1, this.cellSize - 1);
+        this.cells[column][row].draw();
       }
     }
   }
 }
+
 
 
 
